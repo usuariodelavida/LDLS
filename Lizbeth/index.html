@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sorpresa para Lizbeth ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#ffd6e7,#ffeef5,#fff5fa);
+    overflow:hidden;
+    min-height:100vh;
+    position:relative;
+}
+
+/* PANTALLA BLOQUEO */
+
+#lockScreen{
+    position:absolute;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:30px;
+    z-index:10;
+    background:linear-gradient(135deg,#ffd6e7,#fff0f7);
+}
+
+#lockScreen h1{
+    color:#e84393;
+    font-size:2.7rem;
+    margin-bottom:20px;
+}
+
+#lockScreen p{
+    color:#555;
+    font-size:1.1rem;
+    max-width:650px;
+    line-height:1.8;
+    margin-bottom:30px;
+}
+
+.word-buttons{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:15px;
+    margin-bottom:25px;
+}
+
+.word-buttons button{
+    border:none;
+    background:white;
+    color:#d63384;
+    padding:14px 22px;
+    border-radius:30px;
+    cursor:pointer;
+    font-size:1rem;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    transition:0.3s;
+}
+
+.word-buttons button:hover{
+    transform:translateY(-3px);
+    background:#e84393;
+    color:white;
+}
+
+#message{
+    margin-top:15px;
+    color:#b03060;
+    font-size:1.05rem;
+    max-width:550px;
+    line-height:1.7;
+    min-height:60px;
+}
+
+/* CONTENIDO PRINCIPAL */
+
+#mainContent{
+    display:none;
+    min-height:100vh;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    position:relative;
+    z-index:2;
+}
+
+.card{
+    background:rgba(255,255,255,0.92);
+    backdrop-filter:blur(12px);
+    border-radius:30px;
+    max-width:850px;
+    width:100%;
+    text-align:center;
+    padding:45px;
+    box-shadow:0 10px 40px rgba(0,0,0,0.15);
+    animation:fadeIn 1.8s ease;
+}
+
+.card h1{
+    color:#e84393;
+    font-size:3.2rem;
+    margin-bottom:25px;
+}
+
+.card p{
+    color:#555;
+    font-size:1.2rem;
+    line-height:1.9;
+    margin-top:25px;
+}
+
+.photo-frame{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    margin-top:15px;
+}
+
+.photo-frame img{
+    width:100%;
+    max-width:360px;
+    border-radius:25px;
+    object-fit:cover;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+    border:6px solid white;
+}
+
+/* CORAZONES */
+
+.heart{
+    position:absolute;
+    color:#ff6fa8;
+    animation:float 8s linear infinite;
+    opacity:0.5;
+}
+
+@keyframes float{
+    from{
+        transform:translateY(100vh) scale(0.5);
+    }
+    to{
+        transform:translateY(-120vh) scale(1.3);
+    }
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.footer{
+    margin-top:35px;
+    color:#999;
+    font-style:italic;
+    font-size:1rem;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+    #lockScreen h1{
+        font-size:2rem;
+    }
+
+    .card{
+        padding:30px 22px;
+    }
+
+    .card h1{
+        font-size:2.2rem;
+    }
+
+    .card p{
+        font-size:1rem;
+    }
+
+    .word-buttons button{
+        padding:12px 18px;
+        font-size:0.95rem;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- MÚSICA -->
+<audio id="bgMusic" loop>
+    <source src="music/musica para mamá.mp3" type="audio/mp3">
+</audio>
+
+<!-- PANTALLA INICIAL -->
+<div id="lockScreen">
+
+    <h1>Hay palabras que describen almas especiales 💖</h1>
+
+    <p>
+        Algunas palabras tienen la capacidad de abrazar la esencia de una persona.
+        Hoy, hemos guardado este detalle detrás de una de ellas...
+        Elige la que sientas que mejor representa quién eres ✨
+    </p>
+
+    <div class="word-buttons">
+        <button onclick="checkWord('amor')">Amor</button>
+        <button onclick="checkWord('fortaleza')">Fortaleza</button>
+        <button onclick="checkWord('dulzura')">Dulzura</button>
+        <button onclick="checkWord('valentia')">Valentía</button>
+        <button onclick="checkWord('esperanza')">Esperanza</button>
+        <button onclick="checkWord('luz')">Luz</button>
+        <button onclick="checkWord('alegria')">Alegría</button>
+        <button onclick="checkWord('valor')">Valor</button>
+    </div>
+
+    <p id="message"></p>
+
+</div>
+
+<!-- CONTENIDO -->
+<div id="mainContent">
+
+    <div class="card">
+
+        <h1>¡Feliz Día de la Madre, Lizbeth! 🌸</h1>
+
+        <!-- FOTO PERSONAL -->
+        <div class="photo-frame">
+            <img src="imagenes/lizbeth.jpg" alt="Lizbeth">
+        </div>
+
+        <p>
+            Lizbeth, hay personas que iluminan un lugar simplemente con su presencia,
+            y tú eres una de ellas.
+            Tu manera de seguir adelante, de brindar apoyo incluso en los momentos más difíciles
+            y de regalar calma con una sonrisa sincera, deja huella en quienes te rodean.
+            <br><br>
+            Hoy celebramos a una mujer admirable, de corazón inmenso y espíritu valiente,
+            que transforma cada desafío en una razón para continuar brillando.
+            Gracias por inspirarnos cada día con tu fortaleza y tu luz.
+        </p>
+
+        <div class="footer">
+            Con muchísimo cariño, de parte de tus compañeros 💖
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+/* CONTRASEÑA */
+const correctPassword = "valentia";
+
+/* MÚSICA */
+const music = document.getElementById("bgMusic");
+
+/* VALIDACIÓN */
+
+function checkWord(word){
+
+    const message = document.getElementById("message");
+
+    if(word === correctPassword){
+
+        message.innerHTML =
+        "Sí… esa palabra lleva tu esencia y la forma tan especial en la que iluminas la vida de quienes te rodean ✨";
+
+        setTimeout(()=>{
+
+            document.getElementById("lockScreen").style.display = "none";
+
+            document.getElementById("mainContent").style.display = "flex";
+
+            /* REPRODUCIR MÚSICA */
+            music.play();
+
+        },1800);
+
+    }else{
+
+        message.innerHTML =
+        "Qué bonita palabra… porque también vive dentro de ti. Pero hay una aún más especial esperándote 💖";
+    }
+}
+
+/* CORAZONES */
+
+for(let i=0;i<35;i++){
+
+    let heart = document.createElement("div");
+
+    heart.classList.add("heart");
+
+    heart.innerHTML = "❤";
+
+    heart.style.left = Math.random()*100 + "vw";
+
+    heart.style.fontSize = (Math.random()*20 + 10) + "px";
+
+    heart.style.animationDuration = (Math.random()*5 + 5) + "s";
+
+    document.body.appendChild(heart);
+}
+
+</script>
+
+</body>
+</html>
